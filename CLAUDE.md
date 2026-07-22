@@ -1,20 +1,43 @@
-# Cyber Warrior Command Center — project context
+# Cyber Warrior Command Center 2.0 — project context
 
 Read this file first in any new session touching this repo. It exists so work on
 this project doesn't have to be re-explained from scratch each time.
 
 ## What this is
 
-A single landing page (`index.html`, plain HTML/CSS/vanilla JS, no build step,
-no framework) that links out to a family of independent CompTIA study-resource
-sites the owner has built for their students. It is the "command center" —
-students land here first and click through to whichever sim/quiz/acronym game
-they need. It does not host content itself; each linked repo is its own
-GitHub Pages site with its own data and its own `localStorage` progress key.
+The master hub (`index.html`, plain HTML/CSS/vanilla JS, no build step, no
+framework) for the **Cyber Warrior Program** — a family of independent
+CompTIA study-resource sites the owner has built for their students. This is
+the **successor to `Cyber-Warrior-Command-Center`** (the "1.0" repo), which
+now redirects here (see "Redirect" section below). Don't confuse the two —
+all future work happens in this repo.
 
 Brand name already in use across the ecosystem: **"Cyber Warrior Program"**
-(found in Port-Quiz's footer) — Command Center is the umbrella/landing piece
-for that existing brand.
+(found in Port-Quiz's footer).
+
+## Two-layer architecture (new in 2.0)
+
+1. **This hub** — one page, all five subject areas, direct links to every
+   quiz/sim/acronym site, with a search bar filtering across all of them.
+2. **Standalone tile pages** — separate single-purpose repos, each a Royal
+   Blue page with one colored tile matching this hub's tile colors, listing
+   that subject's links only. Built so a teacher can hand a student exactly
+   one tile's worth of links without pointing them at the whole hub.
+
+| Subject | Standalone tile repo | Live URL |
+|---|---|---|
+| A+ Core 1 | A-Core-1-tile | https://rafikiscyent888.github.io/A-Core-1-tile/ |
+| A+ Core 2 | A-Core-2-tile | https://rafikiscyent888.github.io/A-Core-2-tile/ |
+| Network+ | Network-Tile | https://rafikiscyent888.github.io/Network-Tile/ |
+| Security+ | Security-Tile | https://rafikiscyent888.github.io/Security-Tile/ |
+| CySA+ | CySA-Tile | https://rafikiscyent888.github.io/CySA-Tile/ |
+| Universal | Universal-tile | https://rafikiscyent888.github.io/Universal-tile/ |
+
+Every tile/sub-tile in this hub's `index.html` has a "Full Tile ↗" button in
+its header linking to the matching standalone repo above. This is the
+established convention — if a new subject area or standalone tile gets
+built, add both the direct links here **and** the "Full Tile ↗" button, and
+add a matching table row above.
 
 Design spec (owner-specified, do not change without asking):
 - Page background: royal blue
@@ -27,7 +50,7 @@ Design spec (owner-specified, do not change without asking):
   "For educational purposes only. Not affiliated with, endorsed by, or
   sponsored by CompTIA®."
 
-## The 15 source repos (all under github.com/RafikiScyent888)
+## The 15 original source repos (all under github.com/RafikiScyent888)
 
 | Repo | Covers | Format | Item count |
 |---|---|---|---|
@@ -48,21 +71,37 @@ Design spec (owner-specified, do not change without asking):
 | Port-Quiz | Ports/protocols (all certs) | `data.js`, flat array | 26 ports, 6 secure-swap pairs |
 | Windows-Linux-Commands | Windows/Linux/PowerShell commands | `data/acronyms.json` + duplicate `js/acronyms-data.js`, 8 categories | 82 commands |
 
-All 16 repos: plain static HTML/CSS/vanilla JS, no framework, no build tooling
-required to serve (a couple have an *optional* Node script to regenerate a
-data file offline — never required for the site to run). GitHub Pages is
-served from repo root on `main` in every case — no `/docs`, no `gh-pages`
-branch, no GitHub Actions.
+All of these: plain static HTML/CSS/vanilla JS, no framework, no build
+tooling required to serve (a couple have an *optional* Node script to
+regenerate a data file offline — never required for the site to run).
+GitHub Pages served from repo root on `main` in every case — no `/docs`, no
+`gh-pages` branch, no GitHub Actions.
 
 ## Repos added after the initial survey
 
 | Repo | Covers | Format | Item count |
 |---|---|---|---|
 | Cloud-aaS-Learning-Hub | Cloud service/deployment models (IaaS/PaaS/SaaS/On-Prem, Public/Private/Hybrid/Community, CASB/SASE/FaaS/DaaS/XaaS) — all certs | Hub + 7 standalone game pages, shared `js/data.js` + `js/common.js`, military "mission/drill" framing, elemental tile badge colors (Sun/Blue/Green/Lightning/Earth/Purple/Fire) | 13 glossary terms, 20 quiz questions, 24 blitz T/F items, 8 scenarios |
+| A-Core-1-tile | Standalone Core 1 tile (see table above) | Single `index.html`, Royal Green tile, no JS | 3 links |
+| A-Core-2-tile | Standalone Core 2 tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 3 links |
+| Network-Tile | Standalone Network+ tile (see table above) | Single `index.html`, Royal Green tile, no JS | 3 links |
+| Security-Tile | Standalone Security+ tile (see table above) | Single `index.html`, Royal Yellow tile (dark text), no JS | 3 links |
+| CySA-Tile | Standalone CySA+ tile (see table above) | Single `index.html`, Royal Orange tile, no JS | 3 links |
+| Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 3 links (Port Quiz, Windows & Linux Commands, Patch Bay) |
+| Patch-Bay | Unverified — owner referenced `https://rafikiscyent888.github.io/Patch-Bay/` as a Universal-tile link, but it has not been surveyed and its live status is unconfirmed as of this writing. Check before assuming it's up. | Unknown | Unknown |
 
-Linked from the Universal tile. Repo name on GitHub is `Cloud-aaS-Learning-Hub`
-(the working name during development was "Cloud-Ops-Basic-Training" — the
-owner renamed it at creation time; use the GitHub name in links).
+`Cloud-aaS-Learning-Hub`'s working name during development was
+"Cloud-Ops-Basic-Training" — the owner renamed it at repo-creation time; use
+the GitHub name in links.
+
+## Redirect from Cyber-Warrior-Command-Center (1.0)
+
+The owner chose to redirect the old repo rather than leave it live
+independently. `Cyber-Warrior-Command-Center`'s `index.html` should contain
+only a meta-refresh + JS redirect to this repo's live URL, with a visible
+fallback link (for accessibility / if JS/meta-refresh is blocked). Do not
+add real content back to the 1.0 repo — if the owner wants changes, they
+belong here in 2.0.
 
 ## Known content issues (found during the 2026-07 survey, not yet fixed)
 
@@ -121,6 +160,10 @@ this repo for what's been started so far.
 - Push changes with `git push -u origin main`.
 - Don't invent new tiles or reorder the color scheme without asking — the
   owner specified it exactly (see Design spec above).
+- When adding a new subject area or standalone tile, update: this hub's
+  `index.html` (direct links + "Full Tile ↗" button), the standalone-tile
+  table above, and `README.md`'s linked-resources list — all three, every
+  time, so they never drift apart.
 - When adding new cross-repo synthesis work, extend `CONCEPTS.md` rather than
   creating new top-level docs — keep this the single source of truth so a
   future session doesn't have to rediscover it.
