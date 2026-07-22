@@ -36,6 +36,18 @@
     padding: 2.5rem 1rem 1.5rem;
   }
 
+  header .version-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
   header h1 {
     margin: 0;
     font-size: clamp(1.6rem, 5vw, 2.6rem);
@@ -95,7 +107,27 @@
     color: var(--tile-text, var(--text-light));
     font-size: 1.2rem;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
+
+  .tile-header a.full-tile {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 0.25rem 0.6rem;
+    white-space: nowrap;
+  }
+
+  .tile-header a.full-tile:hover { opacity: 1; background: rgba(255,255,255,0.15); }
 
   .tile-body { padding: 1rem 1.25rem 1.25rem; }
 
@@ -116,7 +148,27 @@
     background: var(--tile-color);
     color: var(--tile-text, var(--text-light));
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
+
+  .subtile-header a.full-tile {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .subtile-header a.full-tile:hover { opacity: 1; background: rgba(255,255,255,0.15); }
 
   .subtile-body { padding: 0.75rem 1rem 1rem; background: rgba(255,255,255,0.04); }
 
@@ -175,14 +227,16 @@
     header { padding: 1.75rem 1rem 1rem; }
     main { gap: 1rem; padding: 1rem 0.75rem 2rem; }
     .tile-body { padding: 0.85rem 1rem 1rem; }
+    .tile-header, .subtile-header { flex-wrap: wrap; }
   }
 </style>
 </head>
 <body>
 
 <header>
+  <span class="version-badge">Command Center 2.0</span>
   <h1>🛡️ Cyber Warrior Command Center</h1>
-  <p class="tagline">One place for every sim, acronym game, quiz bank, and command reference built for CompTIA A+, Network+, Security+, and CySA+ study.</p>
+  <p class="tagline">One place for every sim, acronym game, quiz bank, and command reference built for CompTIA A+, Network+, Security+, and CySA+ study. Each section below also opens as its own standalone page — use whichever link works for you.</p>
   <div class="search-wrap">
     <input type="text" id="search" placeholder="Search resources… (e.g. subnetting, RAID, phishing)" aria-label="Search resources">
   </div>
@@ -196,7 +250,10 @@
       <div class="subtile-grid">
 
         <div class="subtile" style="--tile-color: var(--royal-green);">
-          <div class="subtile-header">Core 1</div>
+          <div class="subtile-header">
+            <span>Core 1</span>
+            <a class="full-tile" href="https://rafikiscyent888.github.io/A-Core-1-tile/" target="_blank" rel="noopener">Full Tile ↗</a>
+          </div>
           <div class="subtile-body">
             <ul class="links">
               <li data-search="core 1 quizzes a+ 220-1201"><a href="https://rafikiscyent888.github.io/Core-1-quizzes/" target="_blank" rel="noopener">Core 1 Quizzes</a></li>
@@ -207,7 +264,10 @@
         </div>
 
         <div class="subtile" style="--tile-color: var(--royal-purple);">
-          <div class="subtile-header">Core 2</div>
+          <div class="subtile-header">
+            <span>Core 2</span>
+            <a class="full-tile" href="https://rafikiscyent888.github.io/A-Core-2-tile/" target="_blank" rel="noopener">Full Tile ↗</a>
+          </div>
           <div class="subtile-body">
             <ul class="links">
               <li data-search="core 2 quizzes a+ 220-1202 windows os security"><a href="https://rafikiscyent888.github.io/Core-2-quizzes/" target="_blank" rel="noopener">Core 2 Quizzes</a></li>
@@ -222,7 +282,10 @@
   </section>
 
   <section class="tile" style="--tile-color: var(--royal-green);">
-    <div class="tile-header">Network+</div>
+    <div class="tile-header">
+      <span>Network+</span>
+      <a class="full-tile" href="https://rafikiscyent888.github.io/Network-Tile/" target="_blank" rel="noopener">Full Tile ↗</a>
+    </div>
     <div class="tile-body">
       <ul class="links">
         <li data-search="network quizzes n10-009 subnetting osi routing switching"><a href="https://rafikiscyent888.github.io/Network-quizzes/" target="_blank" rel="noopener">Network Quizzes</a></li>
@@ -233,7 +296,10 @@
   </section>
 
   <section class="tile" style="--tile-color: var(--royal-yellow); --tile-text: var(--text-dark);">
-    <div class="tile-header">Security+</div>
+    <div class="tile-header">
+      <span>Security+</span>
+      <a class="full-tile" href="https://rafikiscyent888.github.io/Security-Tile/" target="_blank" rel="noopener">Full Tile ↗</a>
+    </div>
     <div class="tile-body">
       <ul class="links">
         <li data-search="security quizzes questions sy0-701 cia triad"><a href="https://rafikiscyent888.github.io/Security-Questions/" target="_blank" rel="noopener">Security Quizzes</a></li>
@@ -244,7 +310,10 @@
   </section>
 
   <section class="tile" style="--tile-color: var(--royal-orange);">
-    <div class="tile-header">CySA+</div>
+    <div class="tile-header">
+      <span>CySA+</span>
+      <a class="full-tile" href="https://rafikiscyent888.github.io/CySA-Tile/" target="_blank" rel="noopener">Full Tile ↗</a>
+    </div>
     <div class="tile-body">
       <ul class="links">
         <li data-search="cysa quizzes questions cs0-003 soc analyst"><a href="https://rafikiscyent888.github.io/CySA-questions/" target="_blank" rel="noopener">CySA Quizzes</a></li>
@@ -255,11 +324,15 @@
   </section>
 
   <section class="tile" style="--tile-color: var(--royal-purple);">
-    <div class="tile-header">Universal</div>
+    <div class="tile-header">
+      <span>Universal</span>
+      <a class="full-tile" href="https://rafikiscyent888.github.io/Universal-tile/" target="_blank" rel="noopener">Full Tile ↗</a>
+    </div>
     <div class="tile-body">
       <ul class="links">
         <li data-search="port quiz ports protocols tcp udp secure swap"><a href="https://rafikiscyent888.github.io/Port-Quiz/" target="_blank" rel="noopener">Port Quiz</a></li>
         <li data-search="windows linux commands powershell cli cheatsheet"><a href="https://rafikiscyent888.github.io/Windows-Linux-Commands/" target="_blank" rel="noopener">Windows &amp; Linux Commands</a></li>
+        <li data-search="patch bay cabling patch panel"><a href="https://rafikiscyent888.github.io/Patch-Bay/" target="_blank" rel="noopener">Patch Bay</a></li>
         <li data-search="cloud ops basic training iaas paas saas shared responsibility deployment models casb sase faas daas xaas"><a href="https://rafikiscyent888.github.io/Cloud-aaS-Learning-Hub/" target="_blank" rel="noopener">Cloud Ops: Basic Training</a></li>
       </ul>
     </div>
