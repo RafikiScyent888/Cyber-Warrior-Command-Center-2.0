@@ -32,6 +32,7 @@ Brand name already in use across the ecosystem: **"Cyber Warrior Program"**
 | Security+ | Security-Tile | https://rafikiscyent888.github.io/Security-Tile/ |
 | CySA+ | CySA-Tile | https://rafikiscyent888.github.io/CySA-Tile/ |
 | Universal | Universal-tile | https://rafikiscyent888.github.io/Universal-tile/ |
+| Face Off Games | Face-Off-Games | https://rafikiscyent888.github.io/Face-Off-Games/ |
 
 Every tile/sub-tile in this hub's `index.html` has a "Full Tile ↗" button in
 its header linking to the matching standalone repo above. This is the
@@ -46,6 +47,9 @@ Design spec (owner-specified, do not change without asking):
 - Security+ tile: royal yellow
 - CySA+ tile: royal orange
 - Universal tile: royal purple
+- Face Off Games tile: royal teal (`--royal-teal: #0f766e`) — added when the
+  owner asked for this tile; the six named colours were already taken, so
+  this one is new. Change it if the owner prefers something else.
 - Mobile-friendly, single search bar filtering all links, footer disclaimer:
   "For educational purposes only. Not affiliated with, endorsed by, or
   sponsored by CompTIA®."
@@ -88,6 +92,7 @@ GitHub Pages served from repo root on `main` in every case — no `/docs`, no
 | Security-Tile | Standalone Security+ tile (see table above) | Single `index.html`, Royal Yellow tile (dark text), no JS | 3 links |
 | CySA-Tile | Standalone CySA+ tile (see table above) | Single `index.html`, Royal Orange tile, no JS | 3 links |
 | Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 3 links (Port Quiz, Windows & Linux Commands, Patch Bay) |
+| Face-Off-Games | Standalone Face Off Games tile (see table above) | Single `index.html`, Royal Teal tile, no JS | 5 links (one live game per exam track) |
 | Patch-Bay | Unverified — owner referenced `https://rafikiscyent888.github.io/Patch-Bay/` as a Universal-tile link, but it has not been surveyed and its live status is unconfirmed as of this writing. Check before assuming it's up. | Unknown | Unknown |
 
 `Cloud-aaS-Learning-Hub`'s working name during development was
