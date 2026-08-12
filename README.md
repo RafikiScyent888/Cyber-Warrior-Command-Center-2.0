@@ -26,6 +26,7 @@ Two layers now work together instead of one:
 | Security+ | https://rafikiscyent888.github.io/Security-Tile/ |
 | CySA+ | https://rafikiscyent888.github.io/CySA-Tile/ |
 | Universal | https://rafikiscyent888.github.io/Universal-tile/ |
+| Face Off Games | https://rafikiscyent888.github.io/Face-Off-Games/ |
 
 ## What's here
 
@@ -57,6 +58,9 @@ Two layers now work together instead of one:
 
 **Universal**
 - [Port Quiz](https://rafikiscyent888.github.io/Port-Quiz/) · [Windows & Linux Commands](https://rafikiscyent888.github.io/Windows-Linux-Commands/) · [Patch Bay](https://rafikiscyent888.github.io/Patch-Bay/) · [Cloud Ops: Basic Training](https://rafikiscyent888.github.io/Cloud-aaS-Learning-Hub/) · [Full Tile](https://rafikiscyent888.github.io/Universal-tile/)
+
+**Face Off Games**
+- [A+ Core 1](https://rafikiscyent888.github.io/Face-off-A-Core-1/) · [A+ Core 2](https://rafikiscyent888.github.io/Face-off-A-Core-2/) · [Network+](https://rafikiscyent888.github.io/Face-off-Networking/) · [Security+](https://rafikiscyent888.github.io/Face-off-Security/) · [CySA+](https://rafikiscyent888.github.io/Face-off-CySA/) · [Full Tile](https://rafikiscyent888.github.io/Face-Off-Games/)
 
 ## Hosting
 
