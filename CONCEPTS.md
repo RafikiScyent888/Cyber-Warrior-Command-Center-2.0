@@ -142,7 +142,7 @@ file for this.
   else in the collection covers hands-on CLI the same way. This is a strong
   "Universal" tile fit exactly as placed, and a natural companion to any sim
   that references a CLI (e.g. Network-Sims' fake switch CLI, Core-1-quizzes'
-  networking-commands sub-objective). 
+  networking-commands sub-objective).
 
 ---
 
