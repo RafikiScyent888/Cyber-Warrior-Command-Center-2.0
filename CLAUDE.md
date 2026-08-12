@@ -112,9 +112,17 @@ GitHub Pages served from repo root on `main` in every case — no `/docs`, no
 | Network-Tile | Standalone Network+ tile (see table above) | Single `index.html`, Royal Green tile, no JS | 3 links |
 | Security-Tile | Standalone Security+ tile (see table above) | Single `index.html`, Royal Yellow tile (dark text), no JS | 3 links |
 | CySA-Tile | Standalone CySA+ tile (see table above) | Single `index.html`, Royal Orange tile, no JS | 3 links |
-| Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 3 links (Port Quiz, Windows & Linux Commands, Patch Bay) |
+| Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 5 links (Port Quiz, Windows & Linux Commands, Patch Bay, Subnet Calculator, OSI Model Lab) |
+| Subnet-Calculator-for-Network | IPv4 subnetting — calculator, reference and Class A/B/C practice drills | Single self-contained `index.html`, lifted verbatim from Patch Bay's `module--calc` | 1 module |
+| OSI-Model | OSI model — encapsulation-journey diagram, seven-layer stack, searchable port table | Single self-contained `index.html`, lifted verbatim from Patch Bay's `module--ref` | 1 module |
 | Face-Off-Games | Standalone Face Off Games tile (see table above) | Single `index.html`, Royal Teal tile, no JS | 5 links (one live game per exam track) |
 | Patch-Bay | Unverified — owner referenced `https://rafikiscyent888.github.io/Patch-Bay/` as a Universal-tile link, but it has not been surveyed and its live status is unconfirmed as of this writing. Check before assuming it's up. | Unknown | Unknown |
+
+`Subnet-Calculator-for-Network` and `OSI-Model` are Patch Bay modules pulled
+out onto their own pages, for handing a class one topic without the other seven
+modules around it. Their markup, CSS and JS are byte-identical to Patch Bay's —
+only the title, header text and footer differ — so a change to either module in
+Patch Bay should be copied across, and vice versa, or the two will drift.
 
 `Cloud-aaS-Learning-Hub`'s working name during development was
 "Cloud-Ops-Basic-Training" — the owner renamed it at repo-creation time; use
