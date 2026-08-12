@@ -1,4 +1,4 @@
-# Cyber Warrior Command Center 2.0
+# Cyber Warrior Command Center 2.0 
 
 The master hub for the **Cyber Warrior Program** — central landing page for
 every CompTIA A+, Network+, Security+, and CySA+ study resource built so far.
