@@ -9,7 +9,12 @@
   :root {
     --royal-blue-deep: #0f1f4d;
     --royal-blue: #1e3a8a;
-    --royal-blue-light: #2f4fb0;
+    /* White text on #2f4fb0 measures 6.85:1 — under the 7:1 floor before
+       anything is drawn on top of it, so every list item, the tagline and the
+       footer sitting over the bottom of this gradient failed AAA. Stopping
+       the gradient deeper fixes all of them at once and leaves the tile
+       colours, which are the brand, untouched. */
+    --royal-blue-light: #1b3068;
     --royal-red: #b91c1c;
     --royal-green: #15803d;
     --royal-purple: #6d28d9;
@@ -18,6 +23,14 @@
     /* Face Off Games — the six subject colors were all spoken for, so this is
        a new token rather than a reuse that would read as another A+ tile */
     --royal-teal: #0f766e;
+    /* Interactive Labs. The brief said yellow, but yellow is Security+ and two
+       yellow tiles in one grid read as related — which is the one thing a
+       colour system exists to prevent. This is the same call Face Off Games
+       forced: a new token rather than a reuse. It is a deep gold rather than a
+       bright one because the header AND the small "Full Tile" link both sit on
+       it, and the link is 11.5px body text needing 7:1. A bright gold carries
+       dark text and would have read as Security+ all over again. */
+    --royal-gold: #6d4c00;
     --text-light: #f5f7ff;
     --text-dark: #16192e;
     --card-bg-alpha: rgba(255,255,255,0.06);
@@ -123,7 +136,11 @@
     text-transform: uppercase;
     text-decoration: none;
     color: inherit;
-    opacity: 0.85;
+    /* Was 0.85, which composited this text toward the tile behind it and cost
+       roughly a third of its contrast on every tile in the grid. At 11.5px it
+       is body text and wants 7:1; the fade was buying nothing that the border
+       and the uppercase tracking do not already do. */
+    opacity: 1;
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 0.25rem 0.6rem;
@@ -133,6 +150,33 @@
   .tile-header a.full-tile:hover { opacity: 1; background: rgba(255,255,255,0.15); }
 
   .tile-body { padding: 1rem 1.25rem 1.25rem; }
+
+  /* A listed resource with no site behind it yet. It keeps its place in the
+     order so the list reads as intended, but it is not a link and does not
+     look like one — a student who clicks it would land on a 404. */
+  /* Same plate as its neighbours so it does not read as a broken row, but
+     dashed and unfilled so it does not read as a link either. */
+  .links li.pending {
+    display: block;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.55rem;
+    background: rgba(10,20,52,0.2);
+    border: 1px dashed rgba(255,255,255,0.35);
+    color: var(--text-light);
+    font-size: 0.98rem;
+  }
+  .links li.pending .flag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
 
   .subtile-grid {
     display: grid;
@@ -164,7 +208,11 @@
     text-transform: uppercase;
     text-decoration: none;
     color: inherit;
-    opacity: 0.85;
+    /* Was 0.85, which composited this text toward the tile behind it and cost
+       roughly a third of its contrast on every tile in the grid. At 11.5px it
+       is body text and wants 7:1; the fade was buying nothing that the border
+       and the uppercase tracking do not already do. */
+    opacity: 1;
     border: 1px solid currentColor;
     border-radius: 999px;
     padding: 0.2rem 0.5rem;
@@ -188,7 +236,11 @@
     display: block;
     padding: 0.7rem 0.9rem;
     border-radius: 0.55rem;
-    background: rgba(255,255,255,0.08);
+    /* Was a white wash, which lightened the ground under its own text and left
+       the deepest rows of the page a hair under 7:1. Tinting the plate DOWN
+       instead of up keeps the card reading as a card and buys the contrast
+       back without flattening the page gradient to do it. */
+    background: rgba(10,20,52,0.35);
     color: var(--text-light);
     text-decoration: none;
     font-size: 0.98rem;
@@ -196,7 +248,9 @@
   }
 
   ul.links a:hover, ul.links a:focus-visible {
-    background: rgba(255,255,255,0.2);
+    background: rgba(10,20,52,0.6);
+    outline: 2px solid rgba(255,255,255,0.7);
+    outline-offset: -2px;
     transform: translateX(2px);
   }
 
@@ -335,11 +389,26 @@
       <ul class="links">
         <li data-search="port quiz ports protocols tcp udp secure swap"><a href="https://rafikiscyent888.github.io/Port-Quiz/" target="_blank" rel="noopener">Port Quiz</a></li>
         <li data-search="windows linux commands powershell cli cheatsheet"><a href="https://rafikiscyent888.github.io/Windows-Linux-Commands/" target="_blank" rel="noopener">Windows &amp; Linux Commands</a></li>
-        <li data-search="patch bay cabling patch panel"><a href="https://rafikiscyent888.github.io/Patch-Bay/" target="_blank" rel="noopener">Patch Bay</a></li>
-        <li data-search="subnet calculator subnetting cidr prefix network id broadcast wildcard mask vlsm practice ipv4"><a href="https://rafikiscyent888.github.io/Subnet-Calculator-for-Network/" target="_blank" rel="noopener">Subnet Calculator</a></li>
-        <li data-search="osi model lab seven layers encapsulation ports protocols tcp udp lookup data flow"><a href="https://rafikiscyent888.github.io/OSI-Model/" target="_blank" rel="noopener">OSI Model Lab</a></li>
-        <li data-search="ipv6 eui-64 drills hex binary compression expand prefix subnets address types solicited-node multicast mac interface id link-local"><a href="https://rafikiscyent888.github.io/IPv6-Drills/" target="_blank" rel="noopener">IPv6 &amp; EUI-64 Drills</a></li>
         <li data-search="cloud ops basic training iaas paas saas shared responsibility deployment models casb sase faas daas xaas"><a href="https://rafikiscyent888.github.io/Cloud-aaS-Learning-Hub/" target="_blank" rel="noopener">Cloud Ops: Basic Training</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tile" style="--tile-color: var(--royal-gold);">
+    <div class="tile-header">
+      <span>Interactive Labs</span>
+      <a class="full-tile" href="https://rafikiscyent888.github.io/Interactive-labs/" target="_blank" rel="noopener">Full Tile ↗</a>
+    </div>
+    <div class="tile-body">
+      <ul class="links">
+        <li data-search="core 1 field service center a+ 220-1201 tickets service calls hardware bench laptop printer laser inkjet display cabling mobile cloud troubleshooting"><a href="https://rafikiscyent888.github.io/A-Core-1-Field-Service-Center/" target="_blank" rel="noopener">A+ Core 1 Field Service Center</a></li>
+        <li class="pending" data-search="core 2 field service center a+ 220-1202 tickets service calls windows os security malware troubleshooting">A+ Core 2 Field Service Center<span class="flag">In development</span></li>
+        <li data-search="patch bay cabling patch panel topology star mesh bus ring tree hybrid spanning tree windows linux command line troubleshooting"><a href="https://rafikiscyent888.github.io/Patch-Bay/" target="_blank" rel="noopener">Patch Bay</a></li>
+        <li data-search="osi model lab seven layers encapsulation ports protocols tcp udp lookup data flow"><a href="https://rafikiscyent888.github.io/OSI-Model/" target="_blank" rel="noopener">OSI Model Lab</a></li>
+        <li data-search="subnet calculator subnetting cidr prefix network id broadcast wildcard mask vlsm practice ipv4"><a href="https://rafikiscyent888.github.io/Subnet-Calculator-for-Network/" target="_blank" rel="noopener">Subnet Calculator</a></li>
+        <li data-search="ipv6 eui-64 drills hex binary compression expand prefix subnets address types solicited-node multicast mac interface id link-local"><a href="https://rafikiscyent888.github.io/IPv6-Drills/" target="_blank" rel="noopener">IPv6 &amp; EUI-64 Drills</a></li>
+        <li data-search="security awareness center phishing social engineering passwords mfa physical security incident reporting end user training"><a href="https://rafikiscyent888.github.io/Security-Awareness-Center/" target="_blank" rel="noopener">Security Awareness Center</a></li>
+        <li data-search="cysa cvss center cvss vector base score firewall siem soar edr logs kill chain diamond model mitre att&amp;ck ioc triage log correlation detection tuning threshold alert fatigue soc analyst cs0-003"><a href="https://rafikiscyent888.github.io/CySA-CVSS-Center/" target="_blank" rel="noopener">CySA CVSS Center</a></li>
       </ul>
     </div>
   </section>
