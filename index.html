@@ -19,10 +19,20 @@
     --royal-green: #15803d;
     --royal-purple: #6d28d9;
     --royal-yellow: #eab308;
-    --royal-orange: #c2410c;
-    /* Face Off Games — the six subject colors were all spoken for, so this is
-       a new token rather than a reuse that would read as another A+ tile */
-    --royal-teal: #0f766e;
+    /* CySA+ was royal orange (#c2410c) until the owner asked for blood red.
+       #8b0000 is CSS's own `darkred` and reads as blood without drifting
+       toward brown. It also happens to be the strongest tile on the page for
+       contrast — white on it measures 9.36:1, where the orange it replaces
+       managed 4.84:1 and only passed because a tile heading is large text. */
+    --royal-blood: #8b0000;
+    /* Face Off Games was royal teal (#0f766e), invented because the six
+       subject colours were all spoken for and a reuse would read as another
+       tile in the same family. The owner has since asked for royal green,
+       which is that reuse — Network+ and the A+ Core 1 sub-tile are both
+       already green. It is their call and the token below is the one they
+       named; the collision is noted here so nobody later reads it as a slip.
+       `--royal-teal` is gone rather than left behind, because a token nothing
+       references is a colour the next person will assume is still in play. */
     /* Interactive Labs. The brief said yellow, but yellow is Security+ and two
        yellow tiles in one grid read as related — which is the one thing a
        colour system exists to prevent. This is the same call Face Off Games
@@ -366,7 +376,7 @@
     </div>
   </section>
 
-  <section class="tile" style="--tile-color: var(--royal-orange);">
+  <section class="tile" style="--tile-color: var(--royal-blood);">
     <div class="tile-header">
       <span>CySA+</span>
       <a class="full-tile" href="https://rafikiscyent888.github.io/CySA-Tile/" target="_blank" rel="noopener">Full Tile ↗</a>
@@ -413,7 +423,7 @@
     </div>
   </section>
 
-  <section class="tile" style="--tile-color: var(--royal-teal);">
+  <section class="tile" style="--tile-color: var(--royal-green);">
     <div class="tile-header">
       <span>Face Off Games</span>
       <a class="full-tile" href="https://rafikiscyent888.github.io/Face-Off-Games/" target="_blank" rel="noopener">Full Tile ↗</a>
