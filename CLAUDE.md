@@ -74,10 +74,14 @@ Design spec (owner-specified, do not change without asking):
   until the owner asked for green. This is deliberately a REUSE: Network+ and
   the A+ Core 1 sub-tile are green too, so the grid now carries green in three
   places. The owner was told and chose it; do not "fix" it back.
-- Interactive Labs tile: royal gold (`--royal-gold: #6d4c00`) — a deep gold
-  rather than a bright one, because the header and the small "Full Tile" link
-  both sit on it and the link is 11.5px body text needing 7:1. A bright gold
-  would need dark text and would read as Security+ yellow.
+- Interactive Labs tile: stainless steel (`--royal-steel: #bcc3c9`) — was a
+  deep gold (`--royal-gold: #6d4c00`) until the owner said they did not like
+  it and asked for stainless silver. It is the only NEUTRAL in the grid, and
+  that is the point rather than an oversight: brushed metal reads as workshop,
+  which is what the tile links to. Being light, it is the second DARK-TEXT
+  tile after Security+ — it sets `--tile-text` to the dark token and flips its
+  "Full Tile" pill scrim to the light pair. White on it is 1.6:1; do not put
+  light text back on it.
 - Mobile-friendly, single search bar filtering all links, footer disclaimer:
   "For educational purposes only. Not affiliated with, endorsed by, or
   sponsored by CompTIA®."
@@ -210,7 +214,7 @@ topic taxonomies today:
 Building a real cross-repo concept index means reconciling these three
 schemes per subject, not assuming they already line up. See `CONCEPTS.md` in
 this repo for what's been started so far.
- 
+
 ## Working conventions for this repo
 
 - This repo has no assigned feature branch from the owner — work directly on
