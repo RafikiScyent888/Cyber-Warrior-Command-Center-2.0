@@ -67,11 +67,17 @@ Design spec (owner-specified, do not change without asking):
 - A+ tile: royal red, with two sub-tiles — Core 1 (royal green), Core 2 (royal purple)
 - Network+ tile: royal green
 - Security+ tile: royal yellow
-- CySA+ tile: royal orange
+- CySA+ tile: blood red (`--royal-blood: #8b0000`) — was royal orange until
+  the owner asked for blood red
 - Universal tile: royal purple
-- Face Off Games tile: royal teal (`--royal-teal: #0f766e`) — added when the
-  owner asked for this tile; the six named colours were already taken, so
-  this one is new. Change it if the owner prefers something else.
+- Face Off Games tile: royal green — was royal teal (`--royal-teal: #0f766e`)
+  until the owner asked for green. This is deliberately a REUSE: Network+ and
+  the A+ Core 1 sub-tile are green too, so the grid now carries green in three
+  places. The owner was told and chose it; do not "fix" it back.
+- Interactive Labs tile: royal gold (`--royal-gold: #6d4c00`) — a deep gold
+  rather than a bright one, because the header and the small "Full Tile" link
+  both sit on it and the link is 11.5px body text needing 7:1. A bright gold
+  would need dark text and would read as Security+ yellow.
 - Mobile-friendly, single search bar filtering all links, footer disclaimer:
   "For educational purposes only. Not affiliated with, endorsed by, or
   sponsored by CompTIA®."
@@ -112,11 +118,11 @@ GitHub Pages served from repo root on `main` in every case — no `/docs`, no
 | A-Core-2-tile | Standalone Core 2 tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 3 links |
 | Network-Tile | Standalone Network+ tile (see table above) | Single `index.html`, Royal Green tile, no JS | 3 links |
 | Security-Tile | Standalone Security+ tile (see table above) | Single `index.html`, Royal Yellow tile (dark text), no JS | 3 links |
-| CySA-Tile | Standalone CySA+ tile (see table above) | Single `index.html`, Royal Orange tile, no JS | 3 links |
+| CySA-Tile | Standalone CySA+ tile (see table above) | Single `index.html`, Blood Red tile (`#8b0000`), no JS | 3 links |
 | Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 8 links (Port Quiz, Windows & Linux Commands, Patch Bay, Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, CySA CVSS Center, Cloud Ops: Basic Training) |
 | Subnet-Calculator-for-Network | IPv4 subnetting — calculator, reference and Class A/B/C practice drills | Single self-contained `index.html`, lifted verbatim from Patch Bay's `module--calc` | 1 module |
 | OSI-Model | OSI model — encapsulation-journey diagram, seven-layer stack, searchable port table | Single self-contained `index.html`, lifted verbatim from Patch Bay's `module--ref` | 1 module |
-| Face-Off-Games | Standalone Face Off Games tile (see table above) | Single `index.html`, Royal Teal tile, no JS | 5 links (one live game per exam track) |
+| Face-Off-Games | Standalone Face Off Games tile (see table above) | Single `index.html`, Royal Green tile, no JS | 5 links (one live game per exam track) |
 | Patch-Bay | Universal practice toolkit across A+, Network+ and Security+ — confirmed live and worked on directly in 2026-08 | Single self-contained `index.html` (~730KB), fonts and connector photos embedded as base64, no build step | 8 modules: Command Tester (dual shell + network sim), Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, VLSM, IPv6 Reference & Compression, Binary/Hex, Cabling |
 | CySA-CVSS-Center | CVSS vector reading plus firewall/SIEM/SOAR/EDR log correlation, kill chain and diamond model — CySA+ | Single `index.html` + three ES modules; one seeded generator builds a ground-truth incident per scenario and each tile renders a lens onto it, so every graded answer is computed from the rows actually shown | 15 generated incidents × 31 questions |
 | IPv6-Drills | IPv6 addressing and EUI-64 conversion — all certs | Single self-contained `index.html`, no question bank: every problem generated at render time | 16 drills |
