@@ -135,7 +135,7 @@ file for this.
 - **CySA-Acronyms** — CASB, SASE (cloud-security-specific angle)
 - **Core-2-Sims** / **Security-Sims** — VPC Architecture sim (hands-on
   cloud-network design)
-
+ 
 ### Windows / Linux / PowerShell command-line skills
 - **Windows-Linux-Commands** is the sole practical-commands repo (82
   commands: ipconfig, chmod, PowerShell cmdlets, MMC snap-ins) — nothing
