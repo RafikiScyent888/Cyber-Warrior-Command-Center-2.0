@@ -144,7 +144,7 @@ file for this.
   that references a CLI (e.g. Network-Sims' fake switch CLI, Core-1-quizzes'
   networking-commands sub-objective).
 
---- 
+---
 
 ## Known data errors to fix (carried over from CLAUDE.md, tracked here too)
 
