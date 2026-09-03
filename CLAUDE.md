@@ -210,7 +210,7 @@ topic taxonomies today:
 Building a real cross-repo concept index means reconciling these three
 schemes per subject, not assuming they already line up. See `CONCEPTS.md` in
 this repo for what's been started so far.
-
+ 
 ## Working conventions for this repo
 
 - This repo has no assigned feature branch from the owner — work directly on
