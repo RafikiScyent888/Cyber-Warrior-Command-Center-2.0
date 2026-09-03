@@ -69,7 +69,7 @@ Two layers now work together instead of one:
 
 GitHub Pages, deployed from `main` / root — Settings → Pages → Source:
 Deploy from a branch → `main` → `/ (root)`.
- 
+
 ## Disclaimer
 
 For educational purposes only. Not affiliated with, endorsed by, or
