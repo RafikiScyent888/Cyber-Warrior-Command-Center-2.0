@@ -43,6 +43,20 @@
     --royal-gold: #6d4c00;
     --text-light: #f5f7ff;
     --text-dark: #16192e;
+
+    /* The "Full Tile ↗" pill is 10.9-11.5px bold, which WCAG grades as body
+       text at 7:1 — but it sits on the tile colour, and the tile colours were
+       chosen to carry a 19.2px/700 heading at the large-text floor of 4.5:1.
+       Measured against white, only gold (7.31:1) and blood red (9.36:1) clear
+       7; green manages 4.69 and purple 6.64. Rather than darken colours the
+       owner specified, the pill gets its own ground: a scrim at 0.45 puts the
+       worst tile (green) at 9.39:1 and every other tile above 11, while still
+       letting the tile colour read through the pill.
+       Security+ is the exception — dark text on yellow — so a DARK scrim there
+       would destroy the contrast it fixes everywhere else. That tile overrides
+       both tokens to the light pair inline, next to its --tile-text. */
+    --full-tile-scrim: rgba(6,12,34,0.45);
+    --full-tile-scrim-hover: rgba(6,12,34,0.6);
     --card-bg-alpha: rgba(255,255,255,0.06);
   }
 
@@ -155,9 +169,20 @@
     border-radius: 999px;
     padding: 0.25rem 0.6rem;
     white-space: nowrap;
+    background: var(--full-tile-scrim);
   }
 
-  .tile-header a.full-tile:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+  /* Hover DEEPENS the scrim rather than washing it out. The old
+     rgba(255,255,255,0.15) lightened the pill, which on a light-text tile put
+     the text back under the floor the scrim had just lifted it over — and
+     hover is exactly when someone is reading the thing. The outline carries
+     the affordance so it does not rest on colour alone. */
+  .tile-header a.full-tile:hover,
+  .tile-header a.full-tile:focus-visible {
+    background: var(--full-tile-scrim-hover);
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+  }
 
   .tile-body { padding: 1rem 1.25rem 1.25rem; }
 
@@ -204,7 +229,17 @@
     padding: 0.65rem 1rem;
     background: var(--tile-color);
     color: var(--tile-text, var(--text-light));
-    font-weight: 600;
+    /* Was 16px/600, which WCAG grades as BODY text needing 7:1 — and these two
+       labels sit on the same green and purple as the tile headers, which get
+       away with 4.5:1 only because 19.2px/700 grades as LARGE text. Measured,
+       "Core 1" was 4.69:1 and "Core 2" 6.64:1 against a 7 floor.
+       Matching .tile-header's 1.2rem/700 moves them over the large-text line
+       (>=18.66px and >=700) so the real floor is 4.5:1, which both clear. This
+       is a type change, not a palette change: the owner-specified colours are
+       untouched, and the sub-tile heading now matches the tile heading above
+       it, which is what it always looked like it was trying to do. */
+    font-size: 1.2rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -227,9 +262,16 @@
     border-radius: 999px;
     padding: 0.2rem 0.5rem;
     white-space: nowrap;
+    background: var(--full-tile-scrim);
   }
 
-  .subtile-header a.full-tile:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+  /* Same reasoning as the tile-header pill above: deepen, do not wash out. */
+  .subtile-header a.full-tile:hover,
+  .subtile-header a.full-tile:focus-visible {
+    background: var(--full-tile-scrim-hover);
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+  }
 
   .subtile-body { padding: 0.75rem 1rem 1rem; background: rgba(255,255,255,0.04); }
 
@@ -362,7 +404,9 @@
     </div>
   </section>
 
-  <section class="tile" style="--tile-color: var(--royal-yellow); --tile-text: var(--text-dark);">
+  <!-- The only dark-text tile, so its pill scrim has to run the other way:
+       a dark scrim under dark text would take 9.03:1 down instead of up. -->
+  <section class="tile" style="--tile-color: var(--royal-yellow); --tile-text: var(--text-dark); --full-tile-scrim: rgba(255,255,255,0.45); --full-tile-scrim-hover: rgba(255,255,255,0.6);">
     <div class="tile-header">
       <span>Security+</span>
       <a class="full-tile" href="https://rafikiscyent888.github.io/Security-Tile/" target="_blank" rel="noopener">Full Tile ↗</a>
