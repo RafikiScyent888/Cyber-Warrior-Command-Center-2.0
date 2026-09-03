@@ -54,6 +54,7 @@ Brand name already in use across the ecosystem: **"Cyber Warrior Program"**
 | CySA+ | CySA-Tile | https://rafikiscyent888.github.io/CySA-Tile/ |
 | Universal | Universal-tile | https://rafikiscyent888.github.io/Universal-tile/ |
 | Face Off Games | Face-Off-Games | https://rafikiscyent888.github.io/Face-Off-Games/ |
+| Interactive Labs | Interactive-labs | https://rafikiscyent888.github.io/Interactive-labs/ |
 
 Every tile/sub-tile in this hub's `index.html` has a "Full Tile ↗" button in
 its header linking to the matching standalone repo above. This is the
@@ -112,23 +113,31 @@ GitHub Pages served from repo root on `main` in every case — no `/docs`, no
 | Network-Tile | Standalone Network+ tile (see table above) | Single `index.html`, Royal Green tile, no JS | 3 links |
 | Security-Tile | Standalone Security+ tile (see table above) | Single `index.html`, Royal Yellow tile (dark text), no JS | 3 links |
 | CySA-Tile | Standalone CySA+ tile (see table above) | Single `index.html`, Royal Orange tile, no JS | 3 links |
-| Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 7 links (Port Quiz, Windows & Linux Commands, Patch Bay, Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, Cloud Ops: Basic Training) |
+| Universal-tile | Standalone Universal tile (see table above) | Single `index.html`, Royal Purple tile, no JS | 8 links (Port Quiz, Windows & Linux Commands, Patch Bay, Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, CySA CVSS Center, Cloud Ops: Basic Training) |
 | Subnet-Calculator-for-Network | IPv4 subnetting — calculator, reference and Class A/B/C practice drills | Single self-contained `index.html`, lifted verbatim from Patch Bay's `module--calc` | 1 module |
 | OSI-Model | OSI model — encapsulation-journey diagram, seven-layer stack, searchable port table | Single self-contained `index.html`, lifted verbatim from Patch Bay's `module--ref` | 1 module |
 | Face-Off-Games | Standalone Face Off Games tile (see table above) | Single `index.html`, Royal Teal tile, no JS | 5 links (one live game per exam track) |
 | Patch-Bay | Universal practice toolkit across A+, Network+ and Security+ — confirmed live and worked on directly in 2026-08 | Single self-contained `index.html` (~730KB), fonts and connector photos embedded as base64, no build step | 8 modules: Command Tester (dual shell + network sim), Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, VLSM, IPv6 Reference & Compression, Binary/Hex, Cabling |
+| CySA-CVSS-Center | CVSS vector reading plus firewall/SIEM/SOAR/EDR log correlation, kill chain and diamond model — CySA+ | Single `index.html` + three ES modules; one seeded generator builds a ground-truth incident per scenario and each tile renders a lens onto it, so every graded answer is computed from the rows actually shown | 15 generated incidents × 31 questions |
 | IPv6-Drills | IPv6 addressing and EUI-64 conversion — all certs | Single self-contained `index.html`, no question bank: every problem generated at render time | 16 drills |
 
 `Subnet-Calculator-for-Network`, `OSI-Model` and `IPv6-Drills` are Patch Bay
 modules pulled out onto their own pages, for handing a class one topic without
-the other seven modules around it. Their markup, CSS and JS are byte-identical
-to Patch Bay's — only the title, header text and footer differ — so a change to
-either module in Patch Bay should be copied across, and vice versa, or the two
-will drift.
+the other seven modules around it. A change to one of these modules in Patch Bay
+should be copied across, and vice versa, or the two will drift.
+
+**They are not all byte-identical to their Patch Bay counterparts, despite an
+earlier version of this file saying so.** `IPv6-Drills` is verified different:
+inside Patch Bay the drill styles derive every surface from `currentColor` via
+`color-mix()` so the module picks up whichever circuit tile it sits in, while
+the standalone page carries explicit `--v6-*` colour tokens of its own. The
+drill logic and markup match; the palette layer does not. `Subnet-Calculator-
+for-Network` and `OSI-Model` have not been checked either way — verify before
+assuming a copy-paste will work.
 
 Drift already bit once: the standalone `Universal-tile` sat at 5 links while
 this hub's Universal tile had 6, because `Cloud Ops: Basic Training` was added
-here and not there. Both are at 7 as of 2026-08. **A link added to a tile in
+here and not there. Both are at 8 as of 2026-08. **A link added to a tile in
 this hub has to be added to that tile's standalone repo in the same sitting**,
 or the "Full Tile ↗" button sends students to a shorter list than the one they
 just came from.
