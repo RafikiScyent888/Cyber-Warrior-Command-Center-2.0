@@ -33,27 +33,34 @@
        named; the collision is noted here so nobody later reads it as a slip.
        `--royal-teal` is gone rather than left behind, because a token nothing
        references is a colour the next person will assume is still in play. */
-    /* Interactive Labs. The brief said yellow, but yellow is Security+ and two
-       yellow tiles in one grid read as related — which is the one thing a
-       colour system exists to prevent. This is the same call Face Off Games
-       forced: a new token rather than a reuse. It is a deep gold rather than a
-       bright one because the header AND the small "Full Tile" link both sit on
-       it, and the link is 11.5px body text needing 7:1. A bright gold carries
-       dark text and would have read as Security+ all over again. */
-    --royal-gold: #6d4c00;
+    /* Interactive Labs — stainless steel. Was a deep gold (`--royal-gold:
+       #6d4c00`), chosen when the brief said yellow but yellow was already
+       Security+; the owner did not like it and asked for stainless silver.
+
+       This is the only NEUTRAL in a grid of saturated colours, and that is
+       why it works rather than a problem to fix: brushed metal is the one
+       finish that reads as workshop, which is what this tile links to.
+
+       It is also the second DARK-TEXT tile, after Security+ yellow. A silver
+       light enough to read as steel cannot carry white text — white on this
+       measures 1.6:1 — so the tile sets --tile-text to the dark token and
+       flips its pill scrim to the light pair, exactly as Security+ does.
+       Measured: heading 9.72:1 against a 4.5 floor, pill 12.80:1 against 7. */
+    --royal-steel: #bcc3c9;
     --text-light: #f5f7ff;
     --text-dark: #16192e;
 
     /* The "Full Tile ↗" pill is 10.9-11.5px bold, which WCAG grades as body
        text at 7:1 — but it sits on the tile colour, and the tile colours were
        chosen to carry a 19.2px/700 heading at the large-text floor of 4.5:1.
-       Measured against white, only gold (7.31:1) and blood red (9.36:1) clear
-       7; green manages 4.69 and purple 6.64. Rather than darken colours the
+       Measured against white, only blood red (9.36:1) clears 7 on its own;
+       green manages 4.69 and purple 6.64. Rather than darken colours the
        owner specified, the pill gets its own ground: a scrim at 0.45 puts the
        worst tile (green) at 9.39:1 and every other tile above 11, while still
        letting the tile colour read through the pill.
-       Security+ is the exception — dark text on yellow — so a DARK scrim there
-       would destroy the contrast it fixes everywhere else. That tile overrides
+       Security+ yellow and Interactive Labs steel are the exceptions — both
+       are light tiles carrying DARK text, so a dark scrim there would destroy
+       the contrast it fixes everywhere else. Those two tiles override
        both tokens to the light pair inline, next to its --tile-text. */
     --full-tile-scrim: rgba(6,12,34,0.45);
     --full-tile-scrim-hover: rgba(6,12,34,0.6);
@@ -448,7 +455,9 @@
     </div>
   </section>
 
-  <section class="tile" style="--tile-color: var(--royal-gold);">
+  <!-- Dark text on a light tile, so the pill scrim runs light like Security+.
+       A dark scrim under dark text would undo the contrast it exists to fix. -->
+  <section class="tile" style="--tile-color: var(--royal-steel); --tile-text: var(--text-dark); --full-tile-scrim: rgba(255,255,255,0.45); --full-tile-scrim-hover: rgba(255,255,255,0.6);">
     <div class="tile-header">
       <span>Interactive Labs</span>
       <a class="full-tile" href="https://rafikiscyent888.github.io/Interactive-labs/" target="_blank" rel="noopener">Full Tile ↗</a>
