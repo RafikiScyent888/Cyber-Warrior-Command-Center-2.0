@@ -27,6 +27,8 @@ Two layers now work together instead of one:
 | CySA+ | https://rafikiscyent888.github.io/CySA-Tile/ |
 | Universal | https://rafikiscyent888.github.io/Universal-tile/ |
 | Face Off Games | https://rafikiscyent888.github.io/Face-Off-Games/ |
+| Interactive Labs | https://rafikiscyent888.github.io/Interactive-labs/ |
+| Under the Hood Labs | https://rafikiscyent888.github.io/Under-the-Hood-labs/ |
 
 ## What's here
 
@@ -64,6 +66,9 @@ Two layers now work together instead of one:
 
 **Interactive Labs**
 - [A+ Core 1 Field Service Center](https://rafikiscyent888.github.io/A-Core-1-Field-Service-Center/) · [A+ Core 2 Field Service Center](https://rafikiscyent888.github.io/A-Core-2-Field-Service-Center/) · [Patch Bay](https://rafikiscyent888.github.io/Patch-Bay/) · [OSI Model Lab](https://rafikiscyent888.github.io/OSI-Model/) · [Subnet Calculator](https://rafikiscyent888.github.io/Subnet-Calculator-for-Network/) · [IPv6 & EUI-64 Drills](https://rafikiscyent888.github.io/IPv6-Drills/) · [Security Awareness Center](https://rafikiscyent888.github.io/Security-Awareness-Center/) · [CySA CVSS Center](https://rafikiscyent888.github.io/CySA-CVSS-Center/) · [Full Tile](https://rafikiscyent888.github.io/Interactive-labs/)
+
+**Under the Hood Labs** (in this order)
+- [A+ Core 1 Under the Hood Labs](https://rafikiscyent888.github.io/A-Core-1-under-the-hood-labs/) · [Security Start-up Firewall](https://rafikiscyent888.github.io/Security-Start-up-Firewall/) · [Veterans Overcoming the Odds SOC](https://rafikiscyent888.github.io/Veterans-Overcoming-Odds-SOC/) · [Full Tile](https://rafikiscyent888.github.io/Under-the-Hood-labs/)
 
 ## Hosting
 
