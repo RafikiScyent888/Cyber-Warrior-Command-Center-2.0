@@ -47,6 +47,16 @@
        flips its pill scrim to the light pair, exactly as Security+ does.
        Measured: heading 9.72:1 against a 4.5 floor, pill 12.80:1 against 7. */
     --royal-steel: #bcc3c9;
+    /* Under the Hood Labs — safety orange, the owner's pick of three bright
+       oranges shown as a preview on 28 September 2026 (orange is outside the
+       royal six, so it was previewed first). Not the old CySA+ royal orange
+       (#c2410c, above): that was a deep burnt orange carrying white text.
+       This one is BRIGHT, so like Security+ and Interactive Labs it carries
+       DARK text — white on it is 2.68:1 — and flips its pill scrim to the
+       light pair. It sits after Interactive Labs, so the two lab tiles are
+       together and the orange is kept away from Security+ yellow.
+       Measured: heading 6.03:1 against a 4.5 floor. */
+    --royal-orange: #ff6a00;
     --text-light: #f5f7ff;
     --text-dark: #16192e;
 
@@ -124,7 +134,10 @@
     font-size: 1rem;
   }
 
-  #search::placeholder { color: rgba(245,247,255,0.6); }
+  /* Was 0.6, which measured 4.67:1 on the search box — under the 7:1 floor,
+     and this hint carries the only example of what to type. 0.88 measures
+     8.0:1 and still reads lighter than typed text. (28 September 2026) */
+  #search::placeholder { color: rgba(245,247,255,0.88); }
   #search:focus { outline: 2px solid #fff; outline-offset: 2px; }
 
   main {
@@ -472,6 +485,23 @@
         <li data-search="ipv6 eui-64 drills hex binary compression expand prefix subnets address types solicited-node multicast mac interface id link-local"><a href="https://rafikiscyent888.github.io/IPv6-Drills/" target="_blank" rel="noopener">IPv6 &amp; EUI-64 Drills</a></li>
         <li data-search="security awareness center phishing social engineering passwords mfa physical security incident reporting end user training"><a href="https://rafikiscyent888.github.io/Security-Awareness-Center/" target="_blank" rel="noopener">Security Awareness Center</a></li>
         <li data-search="cysa cvss center cvss vector base score firewall siem soar edr logs kill chain diamond model mitre att&amp;ck ioc triage log correlation detection tuning threshold alert fatigue soc analyst cs0-003"><a href="https://rafikiscyent888.github.io/CySA-CVSS-Center/" target="_blank" rel="noopener">CySA CVSS Center</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Under the Hood Labs. Dark text on a bright tile, so the pill scrim runs
+       light, as on Security+ and Interactive Labs. The three are in the
+       owner's order: A+, then Security+, then CySA+. -->
+  <section class="tile" style="--tile-color: var(--royal-orange); --tile-text: var(--text-dark); --full-tile-scrim: rgba(255,255,255,0.45); --full-tile-scrim-hover: rgba(255,255,255,0.6);">
+    <div class="tile-header">
+      <span>Under the Hood Labs</span>
+      <a class="full-tile" href="https://rafikiscyent888.github.io/Under-the-Hood-labs/" target="_blank" rel="noopener">Full Tile ↗</a>
+    </div>
+    <div class="tile-body">
+      <ul class="links">
+        <li data-search="under the hood labs a+ core 1 220-1201 raid parity rebuild printer laser inkjet thermal impact fuser workstation build post power supply psu wattage ups wireless access point site survey channels interference mobile device battery networking infrastructure display backlight panel mechanism"><a href="https://rafikiscyent888.github.io/A-Core-1-under-the-hood-labs/" target="_blank" rel="noopener">A+ Core 1 Under the Hood Labs</a></li>
+        <li data-search="under the hood security start-up firewall security+ sy0-701 home network router firewall rules log adversary camera segmentation vlan tiers business incident response ransomware bec hipaa aar"><a href="https://rafikiscyent888.github.io/Security-Start-up-Firewall/" target="_blank" rel="noopener">Security Start-up Firewall</a></li>
+        <li data-search="under the hood veterans overcoming the odds soc cysa+ cs0-004 analyst queue triage siem search edr zeek vulnerability scan cvss epss kev incident response mitre att&amp;ck soar metrics mttd mttr phishing beaconing insider"><a href="https://rafikiscyent888.github.io/Veterans-Overcoming-Odds-SOC/" target="_blank" rel="noopener">Veterans Overcoming the Odds SOC</a></li>
       </ul>
     </div>
   </section>
