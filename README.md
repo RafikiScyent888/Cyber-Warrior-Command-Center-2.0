@@ -44,6 +44,9 @@ Two layers now work together instead of one:
 
 ## Linked resources
 
+**Shane's Retake Planner**, the silver-white button right under the search bar:
+[a day-by-day retake plan built from a student's score report](https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/)
+
 **A+ (Core 1 & Core 2)**
 - [Core 1 Quizzes](https://rafikiscyent888.github.io/Core-1-quizzes/) · [Core 1 Sims](https://rafikiscyent888.github.io/Core-1-Sims/) · [Core 1 Full Tile](https://rafikiscyent888.github.io/A-Core-1-tile/)
 - [Core 2 Quizzes](https://rafikiscyent888.github.io/Core-2-quizzes/) · [Core 2 Sims](https://rafikiscyent888.github.io/Core-2-Sims/) · [Core 2 Full Tile](https://rafikiscyent888.github.io/A-Core-2-tile/)

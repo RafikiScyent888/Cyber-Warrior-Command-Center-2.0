@@ -3,26 +3,20 @@
 Read this file first in any new session touching this repo. It exists so work on
 this project doesn't have to be re-explained from scratch each time.
 
-## How to deliver work — applies to EVERY repo, not just this one
+## How to deliver work — see the global rules
 
-**Never push to GitHub. Deliver finished work as a zip file.**
+**Pushing is allowed when the owner asks** (their rule change on 30 September
+2026; until then this section said never push). The global
+`/root/.claude/CLAUDE.md` sets the rules for every repo:
+- push only what the owner names
+- say what is going live first
+- check GitHub afterwards
+- author commits as Claude
+- zip only when asked
 
-The owner uploads everything themselves and does not grant push access to
-assistant sessions. This holds across the whole Cyber Warrior Program — this
-hub, the tile repos, the quiz/sim/acronym repos, and the Face Off games.
-
-The workflow:
-
-1. Work locally and commit locally, so the history and commit messages are
-   there for the owner.
-2. Zip the repo (excluding `.git`) and hand over the zip.
-3. Say **which files actually changed**, separating what the site needs to run
-   from documentation and tooling — the owner uploads by hand and shouldn't
-   have to diff a zip to work out what matters.
-4. Never run `git push`, and don't offer to or ask for credentials.
-
-Work spanning several repos means **one zip per repo**, kept separate so each
-can be uploaded on its own.
+`main` is what GitHub Pages serves, so a push is live to students. When
+reporting a change, still say which files actually changed, separating what
+the site needs to run from documentation and tooling.
 
 ## What this is
 
@@ -94,6 +88,15 @@ Design spec (owner-specified, do not change without asking):
   Security+, then CySA+) and that order is deliberate. Not to be confused with
   the old CySA+ royal orange (`#c2410c`), which was a deep burnt orange with
   white text and is gone.
+- Shane's Retake Planner button: bright silver-white (`--text-light`,
+  #f5f7ff) with navy lettering (`--royal-blue-deep`), directly under the
+  search bar, added 30 September 2026. The owner saw four previews (royal
+  gold, silver-white, electric cyan, deep purple with a gold border) and
+  picked silver-white, because it stands out most and shares no colour with
+  any tile. It is a button, not a tile: it has no Full Tile page. It sits in
+  the header, outside `#tile-grid`, so a search never hides it. It links to
+  https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/, the retake
+  planner named for Shane, its original owner.
 - Mobile-friendly, single search bar filtering all links, footer disclaimer:
   "For educational purposes only. Not affiliated with, endorsed by, or
   sponsored by CompTIA®."
@@ -232,10 +235,8 @@ this repo for what's been started so far.
 
 - This repo has no assigned feature branch from the owner — work directly on
   `main` unless told otherwise.
-- Commit on `main`, then hand over a zip — see "How to deliver work" at the top
-  of this file. This line used to read "push changes with `git push -u origin
-  main`"; that is no longer how work reaches the site, and pushing is not
-  something assistant sessions have access to do.
+- Commit on `main`, and push when the owner asks. See "How to deliver work" at
+  the top of this file.
 - Don't invent new tiles or reorder the color scheme without asking — the
   owner specified it exactly (see Design spec above).
 - When adding a new subject area or standalone tile, update: this hub's
@@ -245,8 +246,10 @@ this repo for what's been started so far.
 - `verify/page.mjs` drives this page in Chromium: every tile has its Full
   Tile button, the Under the Hood tile's place, colour, lettering and link
   order, the search bar, AAA on painted pixels over the whole page on a desk
-  and a phone (including hover and the search hint), and no sideways scroll.
-  `--plant` runs 8 planted mistakes, every one caught. Not needed to run the
+  and a phone (including hover and the search hint), no sideways scroll, and
+  the Retake Planner button: its place, link, colour, visibility during a
+  search, and contrast when hovered. `--plant` runs 13 planted mistakes,
+  every one caught. Not needed to run the
   site. When a tile is added, extend it. (Added 28 September 2026, when it
   also found the search hint at 4.67:1 and it was lifted to 8.0:1.)
 - When adding new cross-repo synthesis work, extend `CONCEPTS.md` rather than

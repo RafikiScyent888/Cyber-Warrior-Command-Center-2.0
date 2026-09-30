@@ -140,6 +140,36 @@
   #search::placeholder { color: rgba(245,247,255,0.88); }
   #search:focus { outline: 2px solid #fff; outline-offset: 2px; }
 
+  /* Shane's Retake Planner: the one link above the tiles, right under the
+     search bar. Bright silver-white with navy text, the owner's pick of four
+     previews (30 September 2026): it is the lightest thing on the page, so
+     it stands out without sharing a colour with any tile. Navy on it
+     measures 14.8:1. It sits in the header, outside #tile-grid, so a search
+     never hides it. */
+  .planner-cta {
+    display: block;
+    max-width: 32rem;
+    margin: 1rem auto 0;
+    padding: 0.9rem 1.2rem;
+    border-radius: 0.9rem;
+    text-decoration: none;
+    text-align: left;
+    background: var(--text-light);
+    color: var(--royal-blue-deep);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08), 0 6px 22px rgba(0,0,0,0.35);
+    transition: transform 0.15s ease;
+  }
+  .planner-cta .cta-title { display: block; font-size: 1.2rem; font-weight: 700; }
+  .planner-cta .cta-sub { display: block; margin-top: 0.2rem; font-size: 0.95rem; }
+  .planner-cta .cta-go { float: right; font-weight: 700; font-size: 1.2rem; }
+  /* The outline carries the hover, not a colour change, so the text keeps
+     its contrast while someone is reading it. */
+  .planner-cta:hover, .planner-cta:focus-visible { transform: translateY(-2px); outline: 3px solid #fff; outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .planner-cta { transition: none; }
+    .planner-cta:hover, .planner-cta:focus-visible { transform: none; }
+  }
+
   main {
     max-width: 72rem;
     margin: 0 auto;
@@ -369,6 +399,11 @@
   <div class="search-wrap">
     <input type="text" id="search" placeholder="Search resources… (e.g. subnetting, RAID, phishing)" aria-label="Search resources">
   </div>
+  <a class="planner-cta" href="https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/" target="_blank" rel="noopener">
+    <span class="cta-go" aria-hidden="true">&rarr;</span>
+    <span class="cta-title"><span aria-hidden="true">📅</span> Shane&rsquo;s Retake Planner</span>
+    <span class="cta-sub">Didn&rsquo;t pass? Paste your score report and get a day-by-day plan to your retake.</span>
+  </a>
 </header>
 
 <main id="tile-grid">

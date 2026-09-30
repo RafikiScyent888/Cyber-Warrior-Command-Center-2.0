@@ -12,6 +12,10 @@
                 the whole page, on a desk and a phone, and with the
                 orange tile's Full Tile pill hovered
    5. PHONE     nothing scrolls sideways at 360px
+   6. PLANNER   Shane's Retake Planner button sits directly under the search
+                bar, goes to the planner in a new tab, is silver-white with
+                dark lettering, stays visible while a search hides tiles, and
+                keeps AAA when hovered
 
    Run:        node verify/page.mjs
    Calibrate:  node verify/page.mjs --plant   (every plant must be caught)
@@ -33,6 +37,7 @@ const UTH = [
   ["Veterans Overcoming the Odds SOC", "https://rafikiscyent888.github.io/Veterans-Overcoming-Odds-SOC/"],
 ];
 const UTH_FULL = "https://rafikiscyent888.github.io/Under-the-Hood-labs/";
+const PLANNER = "https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/";
 
 const lum = ([r, g, b]) => { const f = c => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
 const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
@@ -139,7 +144,26 @@ async function run(dir, port) {
         }
         await shown("zzqxv");
         if (!(await page.$eval("#empty-msg", e => e.classList.contains("show")))) fail("search", `a query that matches nothing doesn't say so`);
+        const hidden = await page.evaluate(() => { const a = document.querySelector("a.planner-cta"); return !a || a.offsetParent === null; });
+        if (hidden) fail("planner", "a search hides the Retake Planner button");
         await shown("");
+
+        /* 6. Shane's Retake Planner, right under the search bar */
+        const cta = await page.evaluate(() => {
+          const a = document.querySelector("a.planner-cta"); if (!a) return null;
+          const cs = getComputedStyle(a), prev = a.previousElementSibling;
+          return { after: prev && prev.classList.contains("search-wrap") && !!prev.querySelector("#search"), href: a.href, target: a.target,
+            text: a.textContent.replace(/\s+/g, " ").trim(), bg: cs.backgroundColor, fg: cs.color };
+        });
+        if (!cta) fail("planner", "there is no Retake Planner button");
+        else {
+          if (!cta.after) fail("planner", "the button is not directly under the search bar");
+          if (cta.href !== PLANNER) fail("planner", `the button goes to ${cta.href}, expected ${PLANNER}`);
+          if (cta.target !== "_blank") fail("planner", "the button doesn't open in a new tab");
+          if (!cta.text.includes("Shane\u2019s Retake Planner")) fail("planner", `the button reads "${cta.text.slice(0, 60)}"`);
+          if (cta.bg !== "rgb(245, 247, 255)") fail("planner", `the button is ${cta.bg}, expected silver-white rgb(245, 247, 255)`);
+          if (lum(cta.fg.match(/\d+/g).map(Number)) > 0.2) fail("planner", `lettering is light (${cta.fg}); silver-white needs dark lettering`);
+        }
       }
 
       /* the search hint is text a student reads, so it is held to 7:1 too.
@@ -165,6 +189,9 @@ async function run(dir, port) {
       const pill = await page.$(`a.full-tile[href="${UTH_FULL}"]`);
       if (pill) { await pill.hover(); await page.waitForTimeout(150);
         const hov = await contrast(page); hov.bad.forEach(b => fail("contrast", `${vp.name}, Under the Hood pill hovered: ${b}`)); }
+      const ctaEl = await page.$("a.planner-cta");
+      if (ctaEl) { await ctaEl.hover(); await page.waitForTimeout(250);
+        const hov = await contrast(page); hov.bad.forEach(b => fail("contrast", `${vp.name}, Retake Planner button hovered: ${b}`)); }
       await page.close();
     }
   } catch (e) { fail("run", "stopped early: " + String(e.message).split("\n")[0]); }
@@ -181,6 +208,11 @@ const PLANTS = {
   nosearchwords: { catches: "search", fn: s => s.replace("printer laser inkjet thermal impact fuser", "printer laser inkjet thermal impact") },
   dimlinks: { catches: "contrast", fn: s => s.replace("    background: rgba(10,20,52,0.35);\n    color: var(--text-light);", "    background: rgba(10,20,52,0.35);\n    color: #9aa3c7;") },
   dimhint: { catches: "contrast", fn: s => s.replace("#search::placeholder { color: rgba(245,247,255,0.88); }", "#search::placeholder { color: rgba(245,247,255,0.6); }") },
+  noplanner: { catches: "planner", fn: s => s.replace(/  <a class="planner-cta"[\s\S]*?<\/a>\n/, "") },
+  plannermoved: { catches: "planner", fn: s => s.replace('  <div class="search-wrap">', '  <p class="tagline">Start here.</p>\n  <div class="search-wrap">').replace(/(  <\/div>\n)(  <a class="planner-cta")/, "$1  <p>Or pick a tile.</p>\n$2") },
+  plannerurl: { catches: "planner", fn: s => s.replace('href="https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/"', 'href="https://rafikiscyent888.github.io/Retake-Planner/"') },
+  plannerdim: { catches: "contrast", fn: s => s.replace("    background: var(--text-light);\n    color: var(--royal-blue-deep);", "    background: var(--text-light);\n    color: #7b86b8;") },
+  plannergold: { catches: "planner", fn: s => s.replace("    background: var(--text-light);\n    color: var(--royal-blue-deep);", "    background: var(--royal-yellow);\n    color: var(--royal-blue-deep);") },
   sideways: { catches: "phone", fn: s => s.replace("  .tile.wide { grid-column: 1 / -1; }", "  .tile.wide { grid-column: 1 / -1; min-width: 700px; }") },
 };
 
@@ -201,5 +233,5 @@ if (process.argv.includes("--plant")) {
 } else {
   const fails = await run(ROOT, 8960);
   if (fails.length) { console.log("FAILURES:\n  " + fails.join("\n  ")); process.exit(1); }
-  console.log("Command Center: every tile has its Full Tile button; Under the Hood Labs sits after Interactive Labs, safety orange with dark lettering, three links in order; search finds them; AAA on painted pixels on a desk and a phone, at rest and with the orange pill hovered; no sideways scroll.");
+  console.log("Command Center: every tile has its Full Tile button; Under the Hood Labs sits after Interactive Labs, safety orange with dark lettering, three links in order; search finds them; AAA on painted pixels on a desk and a phone, at rest and with the orange pill hovered; no sideways scroll; Shane's Retake Planner button right under the search bar, silver-white, visible during a search, AAA when hovered.");
 }
