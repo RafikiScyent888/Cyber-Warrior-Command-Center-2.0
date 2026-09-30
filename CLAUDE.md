@@ -5,11 +5,10 @@ this project doesn't have to be re-explained from scratch each time.
 
 ## How to deliver work — see the global rules
 
-**Pushing is allowed when the owner asks** (their rule change on 30 September
-2026; until then this section said never push). The global
-`/root/.claude/CLAUDE.md` sets the rules for every repo:
-- push only what the owner names
-- say what is going live first
+**Push to GitHub after each change is made**, once it is verified (the
+owner's rule since 30 September 2026; until then this section said never
+push). The global `/root/.claude/CLAUDE.md` sets the rules for every repo:
+- say what is going live
 - check GitHub afterwards
 - author commits as Claude
 - zip only when asked
@@ -235,7 +234,7 @@ this repo for what's been started so far.
 
 - This repo has no assigned feature branch from the owner — work directly on
   `main` unless told otherwise.
-- Commit on `main`, and push when the owner asks. See "How to deliver work" at
+- Commit on `main`, and push after each verified change. See "How to deliver work" at
   the top of this file.
 - Don't invent new tiles or reorder the color scheme without asking — the
   owner specified it exactly (see Design spec above).
