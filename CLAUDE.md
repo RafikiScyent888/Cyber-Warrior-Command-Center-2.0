@@ -83,10 +83,13 @@ Design spec (owner-specified, do not change without asking):
   set to the dark token and the pill scrim flipped to the light pair. White on
   it is 2.68:1; do not put light text on it. It sits right after Interactive
   Labs, so the two lab tiles are together and the orange is kept away from
-  Security+ yellow. Its four links are in the owner's order (A+ Core 1, A+
-  Core 2, then Security+, then CySA+) and that order is deliberate. A+ Core 2
-  Under the Hood Labs was added after Core 1 on 9 October 2026, at the
-  owner's request. Not to be confused with
+  Security+ yellow. Its five links are in the owner's order (A+ Core 1, A+
+  Core 2, then Network+, then Security+, then CySA+) and that order is
+  deliberate. A+ Core 2 Under the Hood Labs was added after Core 1 on 9
+  October 2026, at the owner's request. The E4 Mafia Network (Network+) went
+  between A+ Core 2 and Security Start-up Firewall on 11 October 2026: the
+  owner's place for it (decided 9 October), added once its first slice
+  (the home level's tickets and build mode) was live. Not to be confused with
   the old CySA+ royal orange (`#c2410c`), which was a deep burnt orange with
   white text and is gone.
 - Shane's Retake Planner button: bright silver-white (`--text-light`,
@@ -145,7 +148,7 @@ GitHub Pages served from repo root on `main` in every case — no `/docs`, no
 | Face-Off-Games | Standalone Face Off Games tile (see table above) | Single `index.html`, Royal Green tile, no JS | 5 links (one live game per exam track) |
 | Patch-Bay | Universal practice toolkit across A+, Network+ and Security+ — confirmed live and worked on directly in 2026-08 | Single self-contained `index.html` (~730KB), fonts and connector photos embedded as base64, no build step | 8 modules: Command Tester (dual shell + network sim), Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, VLSM, IPv6 Reference & Compression, Binary/Hex, Cabling |
 | CySA-CVSS-Center | CVSS vector reading plus firewall/SIEM/SOAR/EDR log correlation, kill chain and diamond model — CySA+ | Single `index.html` + three ES modules; one seeded generator builds a ground-truth incident per scenario and each tile renders a lens onto it, so every graded answer is computed from the rows actually shown | 15 generated incidents × 31 questions |
-| Under-the-Hood-labs | Standalone Under the Hood Labs tile (see table above) | Single `index.html`, safety orange tile (dark text), no JS, plus `verify/page.mjs` | 4 links, in order: A+ Core 1 Under the Hood Labs, A+ Core 2 Under the Hood Labs, Security Start-up Firewall, Veterans Overcoming the Odds SOC |
+| Under-the-Hood-labs | Standalone Under the Hood Labs tile (see table above) | Single `index.html`, safety orange tile (dark text), no JS, plus `verify/page.mjs` | 5 links, in order: A+ Core 1 Under the Hood Labs, A+ Core 2 Under the Hood Labs, The E4 Mafia Network, Security Start-up Firewall, Veterans Overcoming the Odds SOC |
 | IPv6-Drills | IPv6 addressing and EUI-64 conversion — all certs | Single self-contained `index.html`, no question bank: every problem generated at render time | 16 drills |
 
 `Subnet-Calculator-for-Network`, `OSI-Model` and `IPv6-Drills` are Patch Bay

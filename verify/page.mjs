@@ -34,6 +34,7 @@ const CHROME = process.env.CHROME || "/opt/pw-browsers/chromium-1194/chrome-linu
 const UTH = [
   ["A+ Core 1 Under the Hood Labs", "https://rafikiscyent888.github.io/A-Core-1-under-the-hood-labs/"],
   ["A+ Core 2 Under the Hood Labs", "https://rafikiscyent888.github.io/A-Core-2-Under-the-Hood-/"],
+  ["The E4 Mafia Network", "https://rafikiscyent888.github.io/The-E4-Mafia-Network/"],   /* Network+, between A+ Core 2 and Security+: the owner's place for it (9 October 2026) */
   ["Security Start-up Firewall", "https://rafikiscyent888.github.io/Security-Start-up-Firewall/"],
   ["Veterans Overcoming the Odds SOC", "https://rafikiscyent888.github.io/Veterans-Overcoming-Odds-SOC/"],
 ];
@@ -139,7 +140,7 @@ async function run(dir, port) {
         /* 3. search */
         const shown = async q => { await page.fill("#search", q); await page.waitForTimeout(80);
           return page.$$eval("#tile-grid li[data-search]:not(.hidden) a", as => as.map(a => a.textContent.trim())); };
-        for (const [q, want] of [["fuser", "A+ Core 1 Under the Hood Labs"], ["help desk tickets", "A+ Core 2 Under the Hood Labs"], ["firewall", "Security Start-up Firewall"], ["mttr", "Veterans Overcoming the Odds SOC"], ["under the hood", "Veterans Overcoming the Odds SOC"]]) {
+        for (const [q, want] of [["fuser", "A+ Core 1 Under the Hood Labs"], ["help desk tickets", "A+ Core 2 Under the Hood Labs"], ["ipconfig", "The E4 Mafia Network"], ["firewall", "Security Start-up Firewall"], ["mttr", "Veterans Overcoming the Odds SOC"], ["under the hood", "Veterans Overcoming the Odds SOC"]]) {
           const got = await shown(q);
           if (!got.includes(want)) fail("search", `searching "${q}" doesn't find ${want}`);
         }
@@ -204,6 +205,7 @@ const ORANGE_TILE = '<section class="tile" style="--tile-color: var(--royal-oran
 const PLANTS = {
   whiteonorange: { catches: "under the hood", fn: s => s.replace(ORANGE_TILE, '<section class="tile" style="--tile-color: var(--royal-orange);">') },
   darkscrim: { catches: "contrast", fn: s => s.replace(ORANGE_TILE, '<section class="tile" style="--tile-color: var(--royal-orange); --tile-text: var(--text-dark); --full-tile-scrim: rgba(6,12,34,0.45); --full-tile-scrim-hover: rgba(6,12,34,0.6);">') },
+  noe4: { catches: "under the hood", fn: s => s.replace(/\s*<li data-search="under the hood the e4 mafia network[^"]*"><a href="https:\/\/rafikiscyent888\.github\.io\/The-E4-Mafia-Network\/"[^<]*<\/a><\/li>/, "") },
   swapped: { catches: "under the hood", fn: s => s.replace(">Security Start-up Firewall</a>", ">TMP</a>").replace(">Veterans Overcoming the Odds SOC</a>", ">Security Start-up Firewall</a>").replace(">TMP</a>", ">Veterans Overcoming the Odds SOC</a>") },
   nocore2uth: { catches: "under the hood", fn: s => s.replace(/        <li data-search="under the hood labs a\+ core 2[^\n]*\n/, "") },
   nofulltile: { catches: "tiles", fn: s => s.replace('<a class="full-tile" href="https://rafikiscyent888.github.io/Face-Off-Games/" target="_blank" rel="noopener">Full Tile ↗</a>', "") },
@@ -235,5 +237,5 @@ if (process.argv.includes("--plant")) {
 } else {
   const fails = await run(ROOT, 8960);
   if (fails.length) { console.log("FAILURES:\n  " + fails.join("\n  ")); process.exit(1); }
-  console.log("Command Center: every tile has its Full Tile button; Under the Hood Labs sits after Interactive Labs, safety orange with dark lettering, four links in order; search finds them; AAA on painted pixels on a desk and a phone, at rest and with the orange pill hovered; no sideways scroll; Shane's Retake Planner button right under the search bar, silver-white, visible during a search, AAA when hovered.");
+  console.log("Command Center: every tile has its Full Tile button; Under the Hood Labs sits after Interactive Labs, safety orange with dark lettering, five links in order; search finds them; AAA on painted pixels on a desk and a phone, at rest and with the orange pill hovered; no sideways scroll; Shane's Retake Planner button right under the search bar, silver-white, visible during a search, AAA when hovered.");
 }
