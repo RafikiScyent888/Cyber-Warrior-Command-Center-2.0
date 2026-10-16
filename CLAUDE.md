@@ -49,6 +49,7 @@ Brand name already in use across the ecosystem: **"Cyber Warrior Program"**
 | Face Off Games | Face-Off-Games | https://rafikiscyent888.github.io/Face-Off-Games/ |
 | Interactive Labs | Interactive-labs | https://rafikiscyent888.github.io/Interactive-labs/ |
 | Under the Hood Labs | Under-the-Hood-labs | https://rafikiscyent888.github.io/Under-the-Hood-labs/ |
+| Supplementary Certs | Supplementary-Certs | https://rafikiscyent888.github.io/Supplementary-Certs/ |
 
 Every tile/sub-tile in this hub's `index.html` has a "Full Tile ↗" button in
 its header linking to the matching standalone repo above. This is the
@@ -92,6 +93,22 @@ Design spec (owner-specified, do not change without asking):
   (the home level's tickets and build mode) was live. Not to be confused with
   the old CySA+ royal orange (`#c2410c`), which was a deep burnt orange with
   white text and is gone.
+- Supplementary Certs tile: indigo (`--royal-indigo: #4b0082`), added 16
+  October 2026, at the owner's request ("the new tile called: Supplementary
+  Certs ... The color of the new tile is Indigo"). Indigo is outside the
+  royal six, so three indigos were shown as a preview on the real hub
+  (classic #4b0082, deep #3730a3, bright #4338ca) and the owner picked the
+  classic one: it is the most distinct from the Universal tile's royal purple
+  (the bright one looked almost the same) and from the page's royal blue (the
+  deep one is the same lightness). It is DARK, so it keeps the light
+  lettering: white on it is 12.1:1. It sits LAST, after Face Off Games, where
+  the owner put it, so nothing else moved. Its first link, at the owner's
+  word, is Physical Security & Resiliency
+  (https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/ —
+  the trailing dash is in the repo's name). That repo isn't reachable from
+  this session's GitHub access, so the link is as the owner gave it, not
+  checked against the site. Its Full Tile page is the Supplementary-Certs
+  repo, built the same day.
 - Shane's Retake Planner button: bright silver-white (`--text-light`,
   #f5f7ff) with navy lettering (`--royal-blue-deep`), directly under the
   search bar, added 30 September 2026. The owner saw four previews (royal
@@ -149,6 +166,7 @@ GitHub Pages served from repo root on `main` in every case — no `/docs`, no
 | Patch-Bay | Universal practice toolkit across A+, Network+ and Security+ — confirmed live and worked on directly in 2026-08 | Single self-contained `index.html` (~730KB), fonts and connector photos embedded as base64, no build step | 8 modules: Command Tester (dual shell + network sim), Subnet Calculator, OSI Model Lab, IPv6 & EUI-64 Drills, VLSM, IPv6 Reference & Compression, Binary/Hex, Cabling |
 | CySA-CVSS-Center | CVSS vector reading plus firewall/SIEM/SOAR/EDR log correlation, kill chain and diamond model — CySA+ | Single `index.html` + three ES modules; one seeded generator builds a ground-truth incident per scenario and each tile renders a lens onto it, so every graded answer is computed from the rows actually shown | 15 generated incidents × 31 questions |
 | Under-the-Hood-labs | Standalone Under the Hood Labs tile (see table above) | Single `index.html`, safety orange tile (dark text), no JS, plus `verify/page.mjs` | 5 links, in order: A+ Core 1 Under the Hood Labs, A+ Core 2 Under the Hood Labs, The E4 Mafia Network, Security Start-up Firewall, Veterans Overcoming the Odds SOC |
+| Supplementary-Certs | Standalone Supplementary Certs tile (see table above) | Single `index.html`, indigo tile (`#4b0082`, light text), no JS, plus `verify/page.mjs` | 1 link: Physical Security & Resiliency |
 | IPv6-Drills | IPv6 addressing and EUI-64 conversion — all certs | Single self-contained `index.html`, no question bank: every problem generated at render time | 16 drills |
 
 `Subnet-Calculator-for-Network`, `OSI-Model` and `IPv6-Drills` are Patch Bay
@@ -252,8 +270,10 @@ this repo for what's been started so far.
   order, the search bar, AAA on painted pixels over the whole page on a desk
   and a phone (including hover and the search hint), no sideways scroll, and
   the Retake Planner button: its place, link, colour, visibility during a
-  search, and contrast when hovered. `--plant` runs 14 planted mistakes,
-  every one caught. Not needed to run the
+  search, and contrast when hovered; the Supplementary Certs tile: last in
+  the grid, indigo with light lettering, its Full Tile page, its link, found
+  by the search, and AAA with its pill hovered. `--plant` runs 20 planted
+  mistakes, every one caught. Not needed to run the
   site. When a tile is added, extend it. (Added 28 September 2026, when it
   also found the search hint at 4.67:1 and it was lifted to 8.0:1.)
 - When adding new cross-repo synthesis work, extend `CONCEPTS.md` rather than

@@ -12,6 +12,11 @@
                 the whole page, on a desk and a phone, and with the
                 orange tile's Full Tile pill hovered
    5. PHONE     nothing scrolls sideways at 360px
+   7. SUPPLEMENTARY CERTS
+                the tile is the last in the grid, after Face Off Games;
+                indigo (#4b0082) with LIGHT lettering; Full Tile goes to its
+                own page; Physical Security & Resiliency is its first link;
+                the search finds it; AAA with its pill hovered
    6. PLANNER   Shane's Retake Planner button sits directly under the search
                 bar, goes to the planner in a new tab, is silver-white with
                 dark lettering, stays visible while a search hides tiles, and
@@ -40,6 +45,8 @@ const UTH = [
 ];
 const UTH_FULL = "https://rafikiscyent888.github.io/Under-the-Hood-labs/";
 const PLANNER = "https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/";
+const SUPP = [["Physical Security & Resiliency", "https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/"]];   /* the first one, at the owner's word (16 October 2026) */
+const SUPP_FULL = "https://rafikiscyent888.github.io/Supplementary-Certs/";
 
 const lum = ([r, g, b]) => { const f = c => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
 const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
@@ -137,10 +144,33 @@ async function run(dir, port) {
           });
         }
 
+        /* 7. the Supplementary Certs tile: last, indigo, light lettering, its page and its link */
+        const si = order.indexOf("Supplementary Certs");
+        if (si < 0) fail("supplementary", "there is no Supplementary Certs tile");
+        else {
+          if (si !== order.length - 1 || order[si - 1] !== "Face Off Games") fail("supplementary", `the tile is not last after Face Off Games (it follows "${order[si - 1]}", ${order.length - 1 - si} tile(s) after it)`);
+          const t = await page.evaluate(n => {
+            const tile = document.querySelectorAll("#tile-grid > .tile")[n];
+            const h = tile.querySelector(".tile-header"), cs = getComputedStyle(h);
+            return { bg: cs.backgroundColor, fg: cs.color, full: tile.querySelector("a.full-tile")?.href,
+              links: [...tile.querySelectorAll(".links a")].map(a => [a.textContent.trim(), a.href, a.target]) };
+          }, si);
+          if (t.bg !== "rgb(75, 0, 130)") fail("supplementary", `tile is ${t.bg}, expected indigo rgb(75, 0, 130)`);
+          if (lum(t.fg.match(/\d+/g).map(Number)) < 0.5) fail("supplementary", `lettering is dark (${t.fg}); indigo needs light lettering`);
+          if (t.full !== SUPP_FULL) fail("supplementary", `Full Tile goes to ${t.full}, expected ${SUPP_FULL}`);
+          if (t.links.length !== SUPP.length) fail("supplementary", `${t.links.length} links, expected ${SUPP.length}`);
+          SUPP.forEach(([name, href], k) => {
+            const l = t.links[k]; if (!l) return;
+            if (l[0] !== name) fail("supplementary", `link ${k + 1} should be "${name}", reads "${l[0]}"`);
+            if (l[1] !== href) fail("supplementary", `link ${k + 1} goes to ${l[1]}, expected ${href}`);
+            if (l[2] !== "_blank") fail("supplementary", `link ${k + 1} doesn't open in a new tab`);
+          });
+        }
+
         /* 3. search */
         const shown = async q => { await page.fill("#search", q); await page.waitForTimeout(80);
           return page.$$eval("#tile-grid li[data-search]:not(.hidden) a", as => as.map(a => a.textContent.trim())); };
-        for (const [q, want] of [["fuser", "A+ Core 1 Under the Hood Labs"], ["help desk tickets", "A+ Core 2 Under the Hood Labs"], ["ipconfig", "The E4 Mafia Network"], ["firewall", "Security Start-up Firewall"], ["mttr", "Veterans Overcoming the Odds SOC"], ["under the hood", "Veterans Overcoming the Odds SOC"]]) {
+        for (const [q, want] of [["fuser", "A+ Core 1 Under the Hood Labs"], ["help desk tickets", "A+ Core 2 Under the Hood Labs"], ["ipconfig", "The E4 Mafia Network"], ["firewall", "Security Start-up Firewall"], ["mttr", "Veterans Overcoming the Odds SOC"], ["under the hood", "Veterans Overcoming the Odds SOC"], ["resiliency", "Physical Security & Resiliency"], ["supplementary", "Physical Security & Resiliency"]]) {
           const got = await shown(q);
           if (!got.includes(want)) fail("search", `searching "${q}" doesn't find ${want}`);
         }
@@ -191,6 +221,9 @@ async function run(dir, port) {
       const pill = await page.$(`a.full-tile[href="${UTH_FULL}"]`);
       if (pill) { await pill.hover(); await page.waitForTimeout(150);
         const hov = await contrast(page); hov.bad.forEach(b => fail("contrast", `${vp.name}, Under the Hood pill hovered: ${b}`)); }
+      const spill = await page.$(`a.full-tile[href="${SUPP_FULL}"]`);
+      if (spill) { await spill.hover(); await page.waitForTimeout(150);
+        const hov = await contrast(page); hov.bad.forEach(b => fail("contrast", `${vp.name}, Supplementary Certs pill hovered: ${b}`)); }
       const ctaEl = await page.$("a.planner-cta");
       if (ctaEl) { await ctaEl.hover(); await page.waitForTimeout(250);
         const hov = await contrast(page); hov.bad.forEach(b => fail("contrast", `${vp.name}, Retake Planner button hovered: ${b}`)); }
@@ -217,6 +250,11 @@ const PLANTS = {
   plannerurl: { catches: "planner", fn: s => s.replace('href="https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/"', 'href="https://rafikiscyent888.github.io/Retake-Planner/"') },
   plannerdim: { catches: "contrast", fn: s => s.replace("    background: var(--text-light);\n    color: var(--royal-blue-deep);", "    background: var(--text-light);\n    color: #7b86b8;") },
   plannergold: { catches: "planner", fn: s => s.replace("    background: var(--text-light);\n    color: var(--royal-blue-deep);", "    background: var(--royal-yellow);\n    color: var(--royal-blue-deep);") },
+  suppmissing: { catches: "supplementary", fn: s => s.replace("<span>Supplementary Certs</span>", "<span>Extra Certs</span>") },
+  supppurple: { catches: "supplementary", fn: s => s.replace('<section class="tile" style="--tile-color: var(--royal-indigo);">', '<section class="tile" style="--tile-color: var(--royal-purple);">') },
+  suppdark: { catches: "supplementary", fn: s => s.replace('<section class="tile" style="--tile-color: var(--royal-indigo);">', '<section class="tile" style="--tile-color: var(--royal-indigo); --tile-text: var(--text-dark);">') },
+  suppnotlast: { catches: "supplementary", fn: s => { const m = s.match(/  <section class="tile" style="--tile-color: var\(--royal-indigo\);">[\s\S]*?<\/section>\n\n/); return m ? s.replace(m[0], "").replace('  <section class="tile" style="--tile-color: var(--royal-green);">\n    <div class="tile-header">\n      <span>Face Off Games</span>', m[0] + '  <section class="tile" style="--tile-color: var(--royal-green);">\n    <div class="tile-header">\n      <span>Face Off Games</span>') : s; } },
+  suppurl: { catches: "supplementary", fn: s => s.replace('href="https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/"', 'href="https://rafikiscyent888.github.io/Physical-Security-and-Resiliency/"') },
   sideways: { catches: "phone", fn: s => s.replace("  .tile.wide { grid-column: 1 / -1; }", "  .tile.wide { grid-column: 1 / -1; min-width: 700px; }") },
 };
 
@@ -237,5 +275,5 @@ if (process.argv.includes("--plant")) {
 } else {
   const fails = await run(ROOT, 8960);
   if (fails.length) { console.log("FAILURES:\n  " + fails.join("\n  ")); process.exit(1); }
-  console.log("Command Center: every tile has its Full Tile button; Under the Hood Labs sits after Interactive Labs, safety orange with dark lettering, five links in order; search finds them; AAA on painted pixels on a desk and a phone, at rest and with the orange pill hovered; no sideways scroll; Shane's Retake Planner button right under the search bar, silver-white, visible during a search, AAA when hovered.");
+  console.log("Command Center: every tile has its Full Tile button; Under the Hood Labs sits after Interactive Labs, safety orange with dark lettering, five links in order; search finds them; AAA on painted pixels on a desk and a phone, at rest and with the orange pill hovered; no sideways scroll; Shane's Retake Planner button right under the search bar, silver-white, visible during a search, AAA when hovered; Supplementary Certs last, indigo with light lettering, its Full Tile page and its link, found by the search, AAA with its pill hovered.");
 }
