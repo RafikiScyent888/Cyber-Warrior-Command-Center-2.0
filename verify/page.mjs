@@ -45,7 +45,7 @@ const UTH = [
 ];
 const UTH_FULL = "https://rafikiscyent888.github.io/Under-the-Hood-labs/";
 const PLANNER = "https://rafikiscyent888.github.io/Shane-s-Retake-Planner-2.0/";
-const SUPP = [["Physical Security & Resiliency", "https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/"]];   /* the first one, at the owner's word (16 October 2026) */
+const SUPP = [["Physical Security & Resiliency", "https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-Design-/"]];   /* the first one, at the owner's word (16 October 2026). The repo is Physical-Security-and-Resiliency-Design-: the address first given left out "Design" and went nowhere */
 const SUPP_FULL = "https://rafikiscyent888.github.io/Supplementary-Certs/";
 
 const lum = ([r, g, b]) => { const f = c => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
@@ -170,7 +170,7 @@ async function run(dir, port) {
         /* 3. search */
         const shown = async q => { await page.fill("#search", q); await page.waitForTimeout(80);
           return page.$$eval("#tile-grid li[data-search]:not(.hidden) a", as => as.map(a => a.textContent.trim())); };
-        for (const [q, want] of [["fuser", "A+ Core 1 Under the Hood Labs"], ["help desk tickets", "A+ Core 2 Under the Hood Labs"], ["ipconfig", "The E4 Mafia Network"], ["firewall", "Security Start-up Firewall"], ["mttr", "Veterans Overcoming the Odds SOC"], ["under the hood", "Veterans Overcoming the Odds SOC"], ["resiliency", "Physical Security & Resiliency"], ["supplementary", "Physical Security & Resiliency"]]) {
+        for (const [q, want] of [["fuser", "A+ Core 1 Under the Hood Labs"], ["help desk tickets", "A+ Core 2 Under the Hood Labs"], ["ipconfig", "The E4 Mafia Network"], ["firewall", "Security Start-up Firewall"], ["mttr", "Veterans Overcoming the Odds SOC"], ["under the hood", "Veterans Overcoming the Odds SOC"], ["resiliency", "Physical Security & Resiliency"], ["supplementary", "Physical Security & Resiliency"], ["psrdm", "Physical Security & Resiliency"]]) {
           const got = await shown(q);
           if (!got.includes(want)) fail("search", `searching "${q}" doesn't find ${want}`);
         }
@@ -254,7 +254,7 @@ const PLANTS = {
   supppurple: { catches: "supplementary", fn: s => s.replace('<section class="tile" style="--tile-color: var(--royal-indigo);">', '<section class="tile" style="--tile-color: var(--royal-purple);">') },
   suppdark: { catches: "supplementary", fn: s => s.replace('<section class="tile" style="--tile-color: var(--royal-indigo);">', '<section class="tile" style="--tile-color: var(--royal-indigo); --tile-text: var(--text-dark);">') },
   suppnotlast: { catches: "supplementary", fn: s => { const m = s.match(/  <section class="tile" style="--tile-color: var\(--royal-indigo\);">[\s\S]*?<\/section>\n\n/); return m ? s.replace(m[0], "").replace('  <section class="tile" style="--tile-color: var(--royal-green);">\n    <div class="tile-header">\n      <span>Face Off Games</span>', m[0] + '  <section class="tile" style="--tile-color: var(--royal-green);">\n    <div class="tile-header">\n      <span>Face Off Games</span>') : s; } },
-  suppurl: { catches: "supplementary", fn: s => s.replace('href="https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/"', 'href="https://rafikiscyent888.github.io/Physical-Security-and-Resiliency/"') },
+  suppurl: { catches: "supplementary", fn: s => s.replace('href="https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-Design-/"', 'href="https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/"') },   /* the address first given, which has no site behind it */
   sideways: { catches: "phone", fn: s => s.replace("  .tile.wide { grid-column: 1 / -1; }", "  .tile.wide { grid-column: 1 / -1; min-width: 700px; }") },
 };
 

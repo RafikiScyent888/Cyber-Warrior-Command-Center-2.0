@@ -75,7 +75,7 @@ Two layers now work together instead of one:
 - [A+ Core 1 Under the Hood Labs](https://rafikiscyent888.github.io/A-Core-1-under-the-hood-labs/) · [A+ Core 2 Under the Hood Labs](https://rafikiscyent888.github.io/A-Core-2-Under-the-Hood-/) · [The E4 Mafia Network](https://rafikiscyent888.github.io/The-E4-Mafia-Network/) · [Security Start-up Firewall](https://rafikiscyent888.github.io/Security-Start-up-Firewall/) · [Veterans Overcoming the Odds SOC](https://rafikiscyent888.github.io/Veterans-Overcoming-Odds-SOC/) · [Full Tile](https://rafikiscyent888.github.io/Under-the-Hood-labs/)
 
 **Supplementary Certs**
-- [Physical Security & Resiliency](https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/) · [Full Tile](https://rafikiscyent888.github.io/Supplementary-Certs/)
+- [Physical Security & Resiliency](https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-Design-/) · [Full Tile](https://rafikiscyent888.github.io/Supplementary-Certs/)
 
 ## Hosting
 

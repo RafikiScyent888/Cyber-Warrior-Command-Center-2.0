@@ -104,11 +104,14 @@ Design spec (owner-specified, do not change without asking):
   lettering: white on it is 12.1:1. It sits LAST, after Face Off Games, where
   the owner put it, so nothing else moved. Its first link, at the owner's
   word, is Physical Security & Resiliency
-  (https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-/ —
-  the trailing dash is in the repo's name). That repo isn't reachable from
-  this session's GitHub access, so the link is as the owner gave it, not
-  checked against the site. Its Full Tile page is the Supplementary-Certs
-  repo, built the same day.
+  (https://rafikiscyent888.github.io/Physical-Security-and-Resiliency-Design-/,
+  the PSRDM Study Hub: a study guide and test bank for the VA Physical
+  Security and Resiliency Design Manual). It first went up as the address
+  given, `.../Physical-Security-and-Resiliency-/`, which has no site behind
+  it: the repo is `Physical-Security-and-Resiliency-Design-`. The owner
+  found the link dead the same day; it was corrected after GitHub's own
+  Pages deployment for that repo confirmed the real address. Its Full Tile
+  page is the Supplementary-Certs repo, built the same day.
 - Shane's Retake Planner button: bright silver-white (`--text-light`,
   #f5f7ff) with navy lettering (`--royal-blue-deep`), directly under the
   search bar, added 30 September 2026. The owner saw four previews (royal
